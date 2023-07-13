@@ -54,5 +54,4 @@ The project will be organized into the following modules:
 * **Monitoring and Logging**: Implement monitoring and logging solutions to capture relevant metrics, logs, and events related to the infrastructure and applications. This will assist in troubleshooting and performance analysis.
 * **Testing and Validation**: Validate the infrastructure provisioning process by performing testing and validation of the deployed resources. Automated testing and integration with a continuous integration/continuous deployment (CI/CD) pipeline is recommended.
 * **Security Best Practices**: Follow security best practices for the infrastructure and VM configurations. This includes employing secure network configurations, properly managing access controls, and applying regular security updates.
-* **Scalability and Elasticity**: Design the infrastructure to be scalable and elastic, allowing for the addition or removal of application servers based on demand. Utilize autoscaling groups or similar mechanisms to handle traffic spikes efficiently.# PCI-DSS-IaC
-# PCI-DSS-IaC
+* **Scalability and Elasticity**: Design the infrastructure to be scalable and elastic, allowing for the addition or removal of application servers based on demand. Utilize autoscaling groups or similar mechanisms to handle traffic spikes efficiently.
