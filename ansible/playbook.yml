@@ -1,0 +1,79 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    # Application Deployment
+    - name: Install dependencies
+      apt:
+        name:
+          - python3-pip
+          - git
+        state: present
+        
+    - name: Clone the application repository
+      git:
+        repo: https://github.com/user/repo.git
+        dest: /opt/app
+
+    - name: Install the application dependencies
+      pip:
+        requirements: /opt/app/requirements.txt
+
+    - name: Start the application
+      service:
+        name: app
+        state: started
+        enabled: yes
+    
+    # Maria DB
+    - name: Install MariaDB
+      apt:
+        name: mariadb-server
+        state: present
+
+    - name: Create the MariaDB database
+      mariadb_db:
+        name: my_database
+        state: present
+
+    - name: Create the MariaDB user
+      mariadb_user:
+        name: my_user
+        password: my_password
+        host: "%"
+        state: present
+
+    - name: Enable MariaDB replication
+      mariadb_replication:
+        mode: master
+        user: my_user
+        password: my_password
+        source_host: replica_host
+        source_port: 3306
+
+    - name: Start MariaDB
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    # Loadbalancer
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Configure Nginx
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
