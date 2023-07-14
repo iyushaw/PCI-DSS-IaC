@@ -9,6 +9,8 @@ This document outlines the requirements and expectations for a project that adhe
 * **Internet Access for Updates**: The VMs should have outbound internet access to download updates and packages required for system maintenance.
 * **High Availability**: The application servers should be distributed across multiple availability zones or regions to ensure high availability and fault tolerance.
 
+![Project Schematic](GCP-PCI_DSS.png)
+
 ### Prerequisites
 
 Before you begin, make sure you have the following:
@@ -24,6 +26,7 @@ The project will be organized into the following modules:
 * **database**: Sets up the database instance.
 * **load_balancer**: Configures the load balancer.
 * **app_server**: Deploys the application servers.
+* **vpn_server**: Deploy a VPN Server to allow management access.
 
 ### Requirements:
 * **Network Segmentation**: Ensure proper network segmentation between the cardholder data environment (CDE) and other parts of your network. This can be achieved by creating separate subnets or networks for the CDE components.
